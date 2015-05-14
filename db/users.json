@@ -1,0 +1,12 @@
+[
+  {
+    "_id": {"$oid": "a00000000000000000000001"},
+    "firebaseId": "twitter:3",
+    "createdAt": {"$date": 1431541055820}
+  },
+  {
+    "_id": {"$oid": "a00000000000000000000002"},
+    "firebaseId": "twitter:4",
+    "createdAt": {"$date": 1431541055915}
+  }
+]
