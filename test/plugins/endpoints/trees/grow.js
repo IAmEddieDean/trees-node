@@ -50,7 +50,27 @@ describe('PUT /trees/{treeId}/grow', function(){
       done();
     });
   });
+  it('should cause damage', function(done){
+    var stub = Sinon.stub(Math, 'random');
+    stub.onCall(0).returns(0).onCall(1).returns(0.5);
+    server.inject({method: 'PUT', url: '/trees/b00000000000000000000001/grow', credentials: {_id: 'a00000000000000000000001'}}, function(response){
+      expect(response.statusCode).to.equal(200);
+      expect(response.result.health).to.equal(92);
+      stub.restore();
+      done();
+    });
+  });
 
+  it('should cause grow', function(done){
+    var stub = Sinon.stub(Math, 'random');
+    stub.onCall(0).returns(0.99).onCall(1).returns(0.7);
+    server.inject({method: 'PUT', url: '/trees/b00000000000000000000001/grow', credentials: {_id: 'a00000000000000000000001'}}, function(response){
+      expect(response.statusCode).to.equal(200);
+      expect(response.result.height).to.equal(4);
+      stub.restore();
+      done();
+    });
+  });
   it('should throw a db error', function(done){
     var stub = Sinon.stub(Tree, 'findOne').yields(new Error());
     server.inject({method: 'PUT', url: '/trees/b00000000000000000000001/grow', credentials: {_id: 'a00000000000000000000001'}}, function(response){
@@ -59,6 +79,7 @@ describe('PUT /trees/{treeId}/grow', function(){
       done();
     });
   });
+
   it('should force damage', function(done){
     server.inject({method: 'PUT', url: '/trees/b00000000000000000000003/grow', credentials: {_id: 'a00000000000000000000002'}}, function(response){
       expect(response.statusCode).to.equal(200);
