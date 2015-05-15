@@ -46,7 +46,7 @@ describe('GET /lives', function(){
   it('should return 6 lives', function(done){
     server.inject({method: 'GET', url: '/lives', credentials: {_id: 'a00000000000000000000001'}}, function(response){
       expect(response.statusCode).to.equal(200);
-      expect(response.result.lives).to.have.length(6);
+      expect(response.result.lives).to.have.length(8);
       done();
     });
   });

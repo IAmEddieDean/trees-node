@@ -24,14 +24,26 @@
     "url": "/assets/mature.png"
   },
   {
-    "name": "oldman",
+    "name": "patriarch",
     "min": 101,
+    "max": 500,
+    "url": "/assets/patriarch.jpg"
+  },
+  {
+    "name": "The General",
+    "min": 501,
+    "max": 749,
+    "url": "/assets/sequoia.png"
+  },
+  {
+    "name": "oldman",
+    "min": 750,
     "max": 999,
     "url": "/assets/oldman.jpeg"
   },
   {
     "name": "beanstalk",
-    "min": 1000,
+    "min": 999.1,
     "max": 5000,
     "url": "/assets/beanstalk.jpeg"
   }
